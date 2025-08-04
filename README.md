@@ -230,10 +230,6 @@ VITE_APP_DESCRIPTION=Dashboard de gestión de pronósticos y alertas
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE.md) para más detalles.
-
 ---
 
 **Desarrollado por:** Julián Pinto  
