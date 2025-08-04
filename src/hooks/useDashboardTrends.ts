@@ -14,11 +14,15 @@ export const useDashboardTrends = () => {
   useEffect(() => {
     const fetchTrends = async () => {
       try {
-        const res = await axios.get("/api/dashboard/trends", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const token = localStorage.getItem("accessToken");
+        const res = await axios.get(
+          "http://localhost:3000/api/dashboard/trends?startDate=2024-01-01&endDate=2024-12-31",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setData(res.data);
       } catch {
         setError("No se pudo cargar las tendencias.");

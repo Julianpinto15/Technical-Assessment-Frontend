@@ -2,29 +2,36 @@ import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { useDashboardTrends } from "../../../hooks/useDashboardTrends";
 
-export default function LineChartOne() {
+export default function SalesTrendsChart() {
   const { data, loading } = useDashboardTrends();
+
+  // Calcular los valores máximos dinámicamente
+  const maxSales = data?.sales ? Math.max(...data.sales) : 0;
+  const maxRevenue = data?.revenue ? Math.max(...data.revenue) : 0;
+
+  // Configurar escalas con margen del 20%
+  const salesMax = Math.ceil(maxSales * 1.2);
+  const revenueMax = Math.ceil(maxRevenue * 1.2);
 
   const options: ApexOptions = {
     legend: {
-      show: false, // Hide legend
+      show: false,
       position: "top",
       horizontalAlign: "left",
     },
-    colors: ["#465FFF", "#9CB9FF"], // Define line colors
+    colors: ["#465FFF", "#9CB9FF"],
     chart: {
       fontFamily: "Outfit, sans-serif",
       height: 310,
-      type: "line", // Set the chart type to 'line'
+      type: "line",
       toolbar: {
-        show: false, // Hide chart toolbar
+        show: false,
       },
     },
     stroke: {
-      curve: "straight", // Define the line style (straight, smooth, or step)
-      width: [2, 2], // Line width for each dataset
+      curve: "straight",
+      width: [2, 2],
     },
-
     fill: {
       type: "gradient",
       gradient: {
@@ -33,32 +40,32 @@ export default function LineChartOne() {
       },
     },
     markers: {
-      size: 0, // Size of the marker points
-      strokeColors: "#fff", // Marker border color
+      size: 0,
+      strokeColors: "#fff",
       strokeWidth: 2,
       hover: {
-        size: 6, // Marker size on hover
+        size: 6,
       },
     },
     grid: {
       xaxis: {
         lines: {
-          show: false, // Hide grid lines on x-axis
+          show: false,
         },
       },
       yaxis: {
         lines: {
-          show: true, // Show grid lines on y-axis
+          show: true,
         },
       },
     },
     dataLabels: {
-      enabled: false, // Disable data labels
+      enabled: false,
     },
     tooltip: {
-      enabled: true, // Enable tooltip
+      enabled: true,
       x: {
-        format: "dd MMM yyyy", // Format for x-axis tooltip
+        format: "dd MMM yyyy",
       },
     },
     xaxis: {
@@ -81,20 +88,47 @@ export default function LineChartOne() {
       axisTicks: { show: false },
       tooltip: { enabled: false },
     },
-    yaxis: {
-      labels: {
-        style: {
-          fontSize: "12px", // Adjust font size for y-axis labels
-          colors: ["#6B7280"], // Color of the labels
+    yaxis: [
+      {
+        // Eje Y izquierdo para Sales
+        seriesName: "Sales",
+        min: 0,
+        max: salesMax || 15000, // Máximo dinámico o 15k por defecto
+        title: {
+          text: "",
+          style: {
+            fontSize: "0px",
+          },
+        },
+        labels: {
+          style: {
+            fontSize: "12px",
+            colors: ["#6B7280"],
+          },
+          formatter: (val: number) => `${val.toLocaleString()}`,
         },
       },
-      title: {
-        text: "", // Remove y-axis title
-        style: {
-          fontSize: "0px",
+      {
+        // Eje Y derecho para Revenue
+        opposite: true,
+        seriesName: "Revenue",
+        min: 0,
+        max: revenueMax || 300000, // Máximo dinámico o 300k por defecto
+        title: {
+          text: "",
+          style: {
+            fontSize: "0px",
+          },
+        },
+        labels: {
+          style: {
+            fontSize: "12px",
+            colors: ["#6B7280"],
+          },
+          formatter: (val: number) => `$${val.toLocaleString()}`,
         },
       },
-    },
+    ],
   };
 
   const series = [
@@ -109,12 +143,52 @@ export default function LineChartOne() {
   ];
 
   if (loading)
-    return <p className="text-sm text-gray-500">Cargando gráfico...</p>;
+    return (
+      <div className="bg-white p-6 rounded-lg shadow-sm border">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+          Tendencias de Ventas e Ingresos
+        </h3>
+        <p className="text-sm text-gray-500">Cargando datos...</p>
+      </div>
+    );
 
   return (
-    <div className="max-w-full overflow-x-auto custom-scrollbar">
-      <div id="chartEight" className="min-w-[1000px]">
-        <Chart options={options} series={series} type="area" height={310} />
+    <div className="bg-white p-6 rounded-lg shadow-sm border">
+      {/* Header ejecutivo */}
+      <div className="mb-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+          📈 Análisis de Tendencias de Ventas e Ingresos
+        </h3>
+        <p className="text-sm text-gray-600">
+          Evolución mensual de unidades vendidas vs ingresos generados
+        </p>
+      </div>
+
+      <div className="max-w-full overflow-x-auto custom-scrollbar">
+        <div id="chartEight" className="min-w-[1000px]">
+          <Chart options={options} series={series} type="area" height={310} />
+        </div>
+      </div>
+
+      {/* KPIs adicionales */}
+      <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
+        <div className="text-center p-3 bg-blue-50 rounded">
+          <span className="block font-medium text-blue-900">
+            Pico de Ventas
+          </span>
+          <span className="text-blue-700">
+            {data?.sales ? Math.max(...data.sales).toLocaleString() : 0}{" "}
+            unidades
+          </span>
+        </div>
+        <div className="text-center p-3 bg-green-50 rounded">
+          <span className="block font-medium text-green-900">
+            Ingresos Máximos
+          </span>
+          <span className="text-green-700">
+            ${data?.revenue ? Math.max(...data.revenue).toLocaleString() : 0}
+          </span>
+        </div>
       </div>
     </div>
   );
