@@ -132,7 +132,7 @@ El frontend está configurado para comunicarse con la API backend a través de A
 - **Tablas dinámicas**: Visualización de datos tabulares
 - **Formularios reactivos**: Validación en tiempo real
 - **Filtros y búsqueda**: Funcionalidades de filtrado
-- **Exportación**: Exportación de datos a CSV/Excel
+- **Importación**: Importación de datos a CSV/Excel
 
 ## 🎨 Componentes UI
 
