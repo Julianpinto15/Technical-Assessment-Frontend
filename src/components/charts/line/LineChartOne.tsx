@@ -1,7 +1,10 @@
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
+import { useDashboardTrends } from "../../../hooks/useDashboardTrends";
 
 export default function LineChartOne() {
+  const { data, loading } = useDashboardTrends();
+
   const options: ApexOptions = {
     legend: {
       show: false, // Hide legend
@@ -59,7 +62,7 @@ export default function LineChartOne() {
       },
     },
     xaxis: {
-      type: "category", // Category-based x-axis
+      type: "category",
       categories: [
         "Jan",
         "Feb",
@@ -74,15 +77,9 @@ export default function LineChartOne() {
         "Nov",
         "Dec",
       ],
-      axisBorder: {
-        show: false, // Hide x-axis border
-      },
-      axisTicks: {
-        show: false, // Hide x-axis ticks
-      },
-      tooltip: {
-        enabled: false, // Disable tooltip for x-axis points
-      },
+      axisBorder: { show: false },
+      axisTicks: { show: false },
+      tooltip: { enabled: false },
     },
     yaxis: {
       labels: {
@@ -103,13 +100,17 @@ export default function LineChartOne() {
   const series = [
     {
       name: "Sales",
-      data: [180, 190, 170, 160, 175, 165, 170, 205, 230, 210, 240, 235],
+      data: data?.sales ?? [],
     },
     {
       name: "Revenue",
-      data: [40, 30, 50, 40, 55, 40, 70, 100, 110, 120, 150, 140],
+      data: data?.revenue ?? [],
     },
   ];
+
+  if (loading)
+    return <p className="text-sm text-gray-500">Cargando gráfico...</p>;
+
   return (
     <div className="max-w-full overflow-x-auto custom-scrollbar">
       <div id="chartEight" className="min-w-[1000px]">
