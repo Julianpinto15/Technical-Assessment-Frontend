@@ -1,192 +1,241 @@
-# TailAdmin React - Free React Tailwind Admin Dashboard Template
+# 🎨 Technical Assessment Frontend
 
-TailAdmin is a free and open-source admin dashboard template built on **React and Tailwind CSS**, providing developers
-with everything they need to create a comprehensive, data-driven back-end,
-dashboard, or admin panel solution for upcoming web projects.
+Una aplicación web moderna desarrollada con React, TypeScript y TailwindCSS que proporciona una interfaz de usuario intuitiva para la gestión de pronósticos, alertas y dashboards.
 
-With TailAdmin, you get access to all the necessary dashboard UI components, elements, and pages required to build a
-feature-rich and complete dashboard or admin panel. Whether you're building dashboard or admin panel for a complex web
-application or a simple website, TailAdmin is the perfect solution to help you get up and running quickly.
+## 🚀 Tecnologías Utilizadas
 
-![TailAdmin React.js Dashboard Preview](./banner.png)
+- **React 19** - Biblioteca de interfaz de usuario
+- **TypeScript** - Lenguaje de programación tipado
+- **Vite** - Herramienta de construcción y desarrollo
+- **TailwindCSS 4.0** - Framework de CSS utilitario
+- **React Router** - Enrutamiento del lado del cliente
+- **Axios** - Cliente HTTP para API
+- **ApexCharts** - Biblioteca de gráficos interactivos
+- **React Helmet** - Gestión de metadatos del documento
+- **Date-fns** - Manipulación de fechas
 
-## Overview
+## 📁 Estructura del Proyecto
 
-TailAdmin provides essential UI components and layouts for building feature-rich, data-driven admin dashboards and
-control panels. It's built on:
-
-- React 19
-- TypeScript
-- Tailwind CSS
-
-### Quick Links
-
-- [✨ Visit Website](https://tailadmin.com)
-- [📄 Documentation](https://tailadmin.com/docs)
-- [⬇️ Download](https://tailadmin.com/download)
-- [🖌️ Figma Design File (Community Edition)](https://www.figma.com/community/file/1214477970819985778)
-- [⚡ Get PRO Version](https://tailadmin.com/pricing)
-
-### Demos
-
-- [Free Version](https://free-react-demo.tailadmin.com/)
-- [Pro Version](https://react-demo.tailadmin.com)
-
-### Other Versions
-
-- [HTML Version](https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template)
-- [Next.js Version](https://github.com/TailAdmin/free-nextjs-admin-dashboard)
-- [Vue.js Version](https://github.com/TailAdmin/vue-tailwind-admin-dashboard)
-
-## Installation
-
-### Prerequisites
-
-To get started with TailAdmin, ensure you have the following prerequisites installed and set up:
-
-- Node.js 18.x or later (recommended to use Node.js 20.x or later)
-
-### Cloning the Repository
-
-Clone the repository using the following command:
-
-```bash
-git clone https://github.com/TailAdmin/free-react-tailwind-admin-dashboard.git
+```
+julianpinto15-technical-assessment-frontend/
+├── index.html                # Template HTML principal
+├── package.json              # Dependencias y scripts
+├── vite.config.ts           # Configuración de Vite
+├── tailwind.config.js       # Configuración de TailwindCSS
+├── tsconfig.json            # Configuración de TypeScript
+└── src/
+    ├── App.tsx              # Componente principal
+    ├── main.tsx             # Punto de entrada
+    ├── index.css            # Estilos globales
+    ├── components/          # Componentes reutilizables
+    │   ├── auth/            # Componentes de autenticación
+    │   ├── charts/          # Gráficos y visualizaciones
+    │   ├── common/          # Componentes comunes
+    │   ├── ecommerce/       # Componentes de dashboard
+    │   ├── form/            # Componentes de formularios
+    │   ├── header/          # Header y navegación
+    │   ├── tables/          # Componentes de tablas
+    │   ├── ui/              # Componentes UI base
+    │   └── UserProfile/     # Perfil de usuario
+    ├── context/             # Contextos de React
+    ├── hooks/               # Hooks personalizados
+    ├── icons/               # Iconos SVG
+    ├── layout/              # Componentes de layout
+    └── pages/               # Páginas de la aplicación
+        ├── AuthPages/       # Páginas de autenticación
+        ├── Charts/          # Páginas de gráficos
+        ├── Dashboard/       # Dashboard principal
+        ├── Forms/           # Páginas de formularios
+        ├── Tables/          # Páginas de tablas
+        └── UiElements/      # Elementos de UI
 ```
 
-> Windows Users: place the repository near the root of your drive if you face issues while cloning.
+## ⚙️ Instalación y Configuración
 
-1. Install dependencies:
+### 1. Clonar el repositorio
 
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+```bash
+git clone https://github.com/tu-usuario/julianpinto15-technical-assessment-frontend.git
+cd julianpinto15-technical-assessment-frontend
+```
 
-   > Use the `--legacy-peer-deps` flag, if you face issues while installing.
+### 2. Instalar dependencias
 
-2. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
+```bash
+npm install
+```
 
-## Components
+### 3. Iniciar el servidor de desarrollo
 
-TailAdmin is a pre-designed starting point for building a web-based dashboard using React.js and Tailwind CSS. The
-template includes:
+```bash
+npm run dev
+```
 
-- Sophisticated and accessible sidebar
-- Data visualization components
-- Prebuilt profile management and 404 page
-- Tables and Charts(Line and Bar)
-- Authentication forms and input elements
-- Alerts, Dropdowns, Modals, Buttons and more
-- Can't forget Dark Mode 🕶️
+La aplicación estará disponible en `http://localhost:5173`
 
-All components are built with React and styled using Tailwind CSS for easy customization.
+### 4. Construir para producción
 
-## Feature Comparison
+```bash
+npm run build
+```
 
-### Free Version
+### 5. Previsualizar build de producción
 
-- 1 Unique Dashboard
-- 30+ dashboard components
-- 50+ UI elements
-- Basic Figma design files
-- Community support
+```bash
+npm run preview
+```
 
-### Pro Version
+## 🔗 Conexión con el Backend
 
-- 5 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM, Stocks (more coming soon)
-- 400+ dashboard components and UI elements
-- Complete Figma design file
-- Email support
+### Configuración de Axios
 
-To learn more about pro version features and pricing, visit our [pricing page](https://tailadmin.com/pricing).
+El frontend está configurado para comunicarse con la API backend a través de Axios. Asegúrate de que:
 
-## Changelog
+1. **El backend esté ejecutándose** en `http://localhost:3000`
+2. **Las variables de entorno** estén configuradas correctamente
+3. **CORS esté habilitado** en el backend para `http://localhost:5173`
 
-### Version 2.0.2 - [March 25, 2025]
+### Flujo de Autenticación
 
-- Upgraded to React 19
-- Included overrides for packages to prevent peer dependency errors.
-- Migrated from react-flatpickr to flatpickr package for React 19 support
+1. **Login**: Los usuarios se autentican a través de `/auth/signin`
+2. **Token Storage**: Los tokens JWT se almacenan en localStorage
+3. **Protected Routes**: Las rutas protegidas verifican la autenticación
+4. **Auto-refresh**: Los tokens se renuevan automáticamente
 
-### Version 2.0.1 - [February 27, 2025]
+## 🎯 Funcionalidades Principales
 
-#### Update Overview
+### 📊 Dashboard
+- **Métricas generales**: Contadores de usuarios, pronósticos y alertas
+- **Gráficos interactivos**: Visualización de datos con ApexCharts
+- **Notificaciones**: Sistema de notificaciones en tiempo real
+- **Filtros de fecha**: Selección de rangos de fecha personalizados
 
-- Upgraded to Tailwind CSS v4 for better performance and efficiency.
-- Updated class usage to match the latest syntax and features.
-- Replaced deprecated class and optimized styles.
+### 🔐 Autenticación
+- **Sign In/Sign Up**: Formularios de registro e inicio de sesión
+- **JWT Authentication**: Autenticación basada en tokens
+- **Protected Routes**: Rutas protegidas por autenticación
+- **User Profile**: Gestión de perfil de usuario
 
-#### Next Steps
+### 📈 Pronósticos
+- **Configuración**: Configuración de horizontes y niveles de confianza
+- **Simulación**: Simulación de pronósticos por SKU
+- **Historial**: Visualización del historial de pronósticos
+- **Métricas**: Análisis de precisión y rendimiento
 
-- Run npm install or yarn install to update dependencies.
-- Check for any style changes or compatibility issues.
-- Refer to the Tailwind CSS v4 [Migration Guide](https://tailwindcss.com/docs/upgrade-guide) on this release. if needed.
-- This update keeps the project up to date with the latest Tailwind improvements. 🚀
+### 🚨 Alertas
+- **Gestión de alertas**: Crear, editar y eliminar alertas
+- **Umbrales configurables**: Configuración de límites mínimos y máximos
+- **Condiciones**: Alertas por encima/debajo de umbrales
+- **Notificaciones**: Sistema de notificaciones por email/SMS
 
-### Version 2.0.0 - [February 2025]
+### 📋 Tablas y Formularios
+- **Tablas dinámicas**: Visualización de datos tabulares
+- **Formularios reactivos**: Validación en tiempo real
+- **Filtros y búsqueda**: Funcionalidades de filtrado
+- **Exportación**: Exportación de datos a CSV/Excel
 
-A major update with comprehensive redesign and modern React patterns implementation.
+## 🎨 Componentes UI
 
-#### Major Improvements
+### Componentes Base
+- **Buttons**: Botones con diferentes variantes y estados
+- **Forms**: Inputs, selects, checkboxes, radio buttons
+- **Alerts**: Notificaciones y mensajes de estado
+- **Modals**: Ventanas modales y diálogos
+- **Tables**: Tablas responsivas con paginación
 
-- Complete UI redesign with modern React patterns
-- New features: collapsible sidebar, chat, and calendar
-- Improved performance and accessibility
-- Updated data visualization using ApexCharts
+### Gráficos y Visualizaciones
+- **Line Charts**: Gráficos de líneas para tendencias
+- **Bar Charts**: Gráficos de barras para comparaciones
+- **Interactive Charts**: Gráficos con zoom y filtros
+- **Real-time Updates**: Actualización en tiempo real
 
-#### Key Features
+## 🛠️ Scripts Disponibles
 
-- Redesigned dashboards (Ecommerce, Analytics, Marketing, CRM)
-- Enhanced navigation with React Router integration
-- Advanced tables with sorting and filtering
-- Calendar with drag-and-drop support
-- New UI components and improved existing ones
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Construye la aplicación para producción
+- `npm run preview` - Previsualiza el build de producción
+- `npm run lint` - Ejecuta el linter para verificar el código
 
-#### Breaking Changes
+## 🔧 Configuración de Desarrollo
 
-- Updated sidebar component API
-- Migrated charts to ApexCharts
-- Revised authentication system
+### ESLint
+El proyecto incluye configuración de ESLint con reglas para:
+- React Hooks
+- TypeScript
+- Mejores prácticas de React
 
-[Read more](https://tailadmin.com/docs/update-logs/react) on this release.
+### TailwindCSS
+Configuración personalizada con:
+- Paleta de colores personalizada
+- Breakpoints responsivos
+- Utilidades personalizadas
+- Dark mode support
 
-### Version 1.3.7 - [June 20, 2024]
+### Vite
+Configuración optimizada con:
+- Hot Module Replacement (HMR)
+- Optimización de assets
+- Code splitting automático
+- SVG como componentes React
 
-#### Enhancements
+## 📱 Responsive Design
 
-1. Remove Repetition of DefaultLayout in every Pages
-2. Add ClickOutside Component for reduce repeated functionality in Header Message, Notification and User Dropdowns.
+La aplicación está diseñada para ser completamente responsiva:
+- **Mobile First**: Diseño optimizado para móviles
+- **Breakpoints**: sm, md, lg, xl, 2xl
+- **Touch Friendly**: Elementos táctiles optimizados
+- **Progressive Enhancement**: Funcionalidades progresivas
 
-### Version 1.3.6 - [Jan 31, 2024]
+## 🌙 Dark Mode
 
-#### Enhancements
+Soporte completo para modo oscuro:
+- **Toggle automático**: Botón de cambio de tema
+- **Persistencia**: Preferencia guardada en localStorage
+- **System preference**: Respeta la preferencia del sistema
+- **Smooth transitions**: Transiciones suaves entre temas
 
-1. Integrate flatpickr in [Date Picker/Form Elements]
-2. Change color after select an option [Select Element/Form Elements].
-3. Make it functional [Multiselect Dropdown/Form Elements].
-4. Make best value editable [Pricing Table One/Pricing Table].
-5. Rearrange Folder structure.
+## 📚 Estructura de Hooks
 
-### Version 1.2.0 - [Apr 28, 2023]
+### Hooks Personalizados
+- `useDashboardNotifications`: Gestión de notificaciones del dashboard
+- `useDashboardTrends`: Análisis de tendencias y métricas
+- `useGoBack`: Navegación hacia atrás con historial
+- `useModal`: Gestión de estados de modales
 
-- Add Typescript in TailAdmin React.
+## 🚀 Deployment
 
-### Version 1.0.0 - Initial Release - [Mar 13, 2023]
+### Build de Producción
+```bash
+npm run build
+```
 
-- Initial release of TailAdmin React.
+### Variables de Entorno de Producción
+```env
+VITE_API_BASE_URL=https://tu-api-produccion.com/api
+VITE_APP_TITLE=Technical Assessment
+VITE_APP_DESCRIPTION=Dashboard de gestión de pronósticos y alertas
+```
 
-## License
+### Servicios Recomendados
+- **Vercel**: Deployment automático desde Git
+- **Netlify**: Hosting estático con CI/CD
+- **AWS S3 + CloudFront**: Hosting escalable
+- **Firebase Hosting**: Hosting rápido y seguro
 
-TailAdmin React.js Free Version is released under the MIT License.
+## 🤝 Contribución
 
-## Support
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
-If you find this project helpful, please consider giving it a star on GitHub. Your support helps us continue developing
-and maintaining this template.
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE.md) para más detalles.
+
+---
+
+**Desarrollado por:** Julián Pinto  
+**Versión:** 2.0.2  
+**Framework:** React 19 + TypeScript + TailwindCSS 4.0
